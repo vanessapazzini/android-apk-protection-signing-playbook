@@ -64,33 +64,35 @@
 
 Este projeto demonstra proteção via **ferramenta de RASP** com **blueprint (JSON)** que define **guards** e **tamper action**.
 
-**Guards usados (exemplo):**
-- `emulatorDetection` — detecta execução em **emulador**
-- `hookDetection` — detecta frameworks de **hook/instrumentação**
-- `rootDetection` — detecta **root** no dispositivo
+Verificações de segurança (exemplo):
 
-**Tamper Action (exemplo):**
-- `type: openUrlAndFail` — abre uma URL informativa e **bloqueia a execução do app**.
-- `immediateAction: false` — aciona a ação **no fluxo de inicialização**, não imediatamente.
+`Detecção de emulador` — identifica se o app está sendo executado em um ambiente emulado.
+`Detecção de hooking/instrumentação` — identifica frameworks que tentam interceptar ou modificar o comportamento do app.
+`Detecção de root/jailbreak` — identifica dispositivos com permissões elevadas que podem comprometer a segurança.
 
+Ações de resposta (exemplo):
 
+`Abrir URL e encerrar execução` — direciona o usuário para uma página informativa e bloqueia o uso do app.
+`Acionamento no fluxo de inicialização` — define se a ação ocorre imediatamente ou durante a inicialização do app.
 
 
 **Exemplo de blueprint (genérico)** — `blueprints/example-protection.json`:
 ```json
+
 {
   "appAware": true,
-  "guards": [
-    "emulatorDetection",
-    "hookDetection",
-    "rootDetection"
+  "checks": [
+    "emulator",
+    "hooking",
+    "root"
   ],
-  "tamperAction": {
-    "immediateAction": false,
-    "type": "openUrlAndFail",
+  "response": {
+    "trigger": "onStartup",
+    "action": "openUrlAndExit",
     "url": "https://example.com/security-help"
   }
 }
+
 ```
 
 ## Comando de proteção (genérico / vendor-agnostic):
