@@ -66,14 +66,14 @@ Este projeto demonstra proteção via **ferramenta de RASP** com **blueprint (JS
 
 Verificações de segurança (exemplo):
 
-`Detecção de emulador` — identifica se o app está sendo executado em um ambiente emulado.
-`Detecção de hooking/instrumentação` — identifica frameworks que tentam interceptar ou modificar o comportamento do app.
-`Detecção de root/jailbreak` — identifica dispositivos com permissões elevadas que podem comprometer a segurança.
+`Detecção de emulador` — identifica se o app está sendo executado em um ambiente emulado.  
+`Detecção de hooking/instrumentação` — identifica frameworks que tentam interceptar ou modificar o comportamento do app.  
+`Detecção de root/jailbreak` — identifica dispositivos com permissões elevadas que podem comprometer a segurança.  
 
 Ações de resposta (exemplo):
 
-`Abrir URL e encerrar execução` — direciona o usuário para uma página informativa e bloqueia o uso do app.
-`Acionamento no fluxo de inicialização` — define se a ação ocorre imediatamente ou durante a inicialização do app.
+`Abrir URL e encerrar execução` — direciona o usuário para uma página informativa e bloqueia o uso do app.  
+`Acionamento no fluxo de inicialização` — define se a ação ocorre imediatamente ou durante a inicialização do app.  
 
 
 **Exemplo de blueprint (genérico)** — `blueprints/example-protection.json`:
