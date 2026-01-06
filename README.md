@@ -52,7 +52,7 @@
 - APK protegido/alinhado:  
   `C:\Users\MeuUser\Documents\RASP\apps\protected\SimpleSimon\SimpleSimon-aligned.apk`
 - Keystore:  
-  `C:\Users\MeuUser\Documents\RASP\Android\protect-android-6.5.0-windows\bin\meuapp.keystore`
+  `C:\Users\MeuUser\Documents\RASP\Android\protect-android-windows\bin\meuapp.keystore`
 - Saída do APK assinado:  
   `C:\Users\MeuUser\Documents\RASP\apps\assinados\SimpleSimon-assinado.apk`
 
@@ -137,7 +137,7 @@ echo [OK] Protecao concluida. APK gerado normalmente como unsigned/unaligned.
 ```bat
 
 "C:\Users\MeuUser\AppData\Local\Android\Sdk\build-tools\36.1.0\apksigner.bat" sign ^
-  --ks "C:\Users\MeuUser\Documents\RASP\Android\protect-android-6.5.0-windows\bin\meuapp.keystore" ^
+  --ks "C:\Users\MeuUser\Documents\RASP\Android\protect-android-windows\bin\meuapp.keystore" ^
   --ks-key-alias meuapp ^
   --ks-pass pass:%KS_PASS% ^
   --key-pass pass:%KEY_PASS% ^
