@@ -69,7 +69,7 @@
 
 ## 4) Pipeline / Passo a passo
 
-### 3.1 Proteção (opcional, com blueprint)
+### 4.1 Proteção (opcional, com blueprint)
 
 Este projeto demonstra proteção via **ferramenta de RASP** com **blueprint (JSON)** que define **guards** e **tamper action**.
 
@@ -127,7 +127,7 @@ echo [OK] Protecao concluida. APK gerado normalmente como unsigned/unaligned.
 
 ```
 
-### 3.2 Gerar keystore (se ainda não tiver)
+### 4.2 Gerar keystore (se ainda não tiver)
 ```bat
 
 "C:\Program Files\Java\Zulu\zulu-25\bin\keytool" -genkeypair ^
@@ -137,14 +137,14 @@ echo [OK] Protecao concluida. APK gerado normalmente como unsigned/unaligned.
   -keystore "C:\caminho\para\meuapp.keystore"
 ```
 
-### 3.3 Zipalign (sempre antes de assinar)
+### 4.3 Zipalign (sempre antes de assinar)
 ```bat
 
 "C:\Users\MeuUser\AppData\Local\Android\Sdk\build-tools\36.1.0\zipalign.exe" -v -p 4 ^
   "C:\Users\MeuUser\Documents\RASP\apps\protected\SimpleSimon\SimpleSimon-unaligned-unsigned-protected.apk" ^
   "C:\Users\MeuUser\Documents\RASP\apps\protected\SimpleSimon\SimpleSimon-aligned.apk"
 ```
-### 3.4 Assinatura (apksigner — APK Signature v2/v3)
+### 4.4 Assinatura (apksigner — APK Signature v2/v3)
 ```bat
 
 "C:\Users\MeuUser\AppData\Local\Android\Sdk\build-tools\36.1.0\apksigner.bat" sign ^
@@ -155,13 +155,13 @@ echo [OK] Protecao concluida. APK gerado normalmente como unsigned/unaligned.
   --out "C:\Users\MeuUser\Documents\RASP\apps\assinados\SimpleSimon-assinado.apk" ^
   "C:\Users\MeuUser\Documents\RASP\apps\protected\SimpleSimon\SimpleSimon-aligned.apk"
 ```
-### 3.5 Verificação da assinatura
+### 4.5 Verificação da assinatura
 ```bat
 
 "C:\Users\MeuUser\AppData\Local\Android\Sdk\build-tools\36.1.0\apksigner.bat" verify --verbose --print-certs ^
   "C:\Users\MeuUser\Documents\RASP\apps\assinados\SimpleSimon-assinado.apk"
 ```
-### 3.6 Instalação no emulador
+### 4.6 Instalação no emulador
     Dica: Desinstale versões anteriores se o package name for igual e a assinatura diferente (para evitar INSTALL_FAILED_UPDATE_INCOMPATIBLE).
 ```bat
 
