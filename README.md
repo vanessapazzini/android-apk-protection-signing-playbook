@@ -12,13 +12,14 @@
 
 ## Sumário
 - [Contexto & Objetivo](#1-contexto--objetivo)
-- [Ambiente & Ferramentas](#2-ambiente--ferramentas)
-- [Pipeline / Passo a passo](#3-pipeline--passo-a-passo)
-- [Assinatura & parâmetros](#4-assinatura--parametros)
-- [Boas práticas](#5-boas-práticas)
-- [Erros comuns & soluções](#6-erros-comuns--soluções)
-- [Validação](#7-validação)
-- [Referências](#8-referências)
+- [Relação com AppSec](#2-relação-com-appsec)
+- [Ambiente & Ferramentas](#3-ambiente--ferramentas)
+- [Pipeline / Passo a passo](#4-pipeline--passo-a-passo)
+- [Assinatura & parâmetros](#5-assinatura--parâmetros)
+- [Boas práticas](#6-boas-práticas)
+- [Erros comuns & soluções](#7-erros-comuns--soluções)
+- [Validação](#8-validação)
+- [Referências](#9-referências)
 
 
 ---
@@ -34,7 +35,15 @@
 
 ---
 
-## 2) Ambiente & Ferramentas
+## 2) Relação com AppSec
+- proteção contra engenharia reversa
+- Hardening de apps mobile
+- Supply chain de artefatos
+- Integridade de build
+
+---
+
+## 3) Ambiente & Ferramentas
 
 - **OS**: Windows 11
 - **Android SDK Location**: `C:\Users\MeuUser\AppData\Local\Android\Sdk`
@@ -58,7 +67,7 @@
 
 ---
 
-## 3) Pipeline / Passo a passo
+## 4) Pipeline / Passo a passo
 
 ### 3.1 Proteção (opcional, com blueprint)
 
@@ -165,7 +174,7 @@ echo [OK] Protecao concluida. APK gerado normalmente como unsigned/unaligned.
 ```
 
 
-## 4) Assinatura & parâmetros
+## 5) Assinatura & parâmetros
 
 Alias: meuapp  
 Validade: 10 anos (3650 dias)  
@@ -173,7 +182,7 @@ Algoritmo: RSA 2048
 DN genérico: CN=User, OU=MobileSecurity, O=ExampleOrg, L=City, ST=State, C=BR
 
 
-## 5) Boas práticas
+## 6) Boas práticas
 
 - Ordem correta: proteger → zipalign → assinar → verificar → testar.
 - Nunca faça zipalign depois de assinar (invalida a assinatura).
@@ -181,7 +190,7 @@ DN genérico: CN=User, OU=MobileSecurity, O=ExampleOrg, L=City, ST=State, C=BR
 - Use variáveis de ambiente para senhas (KS_PASS, KEY_PASS).
 - Documente o package name e o API Level do AVD para reprodutibilidade.
 
-## 6) Erros comuns & soluções
+## 7) Erros comuns & soluções
 
 - failed to start adb
 Verifique instalação do Platform-Tools, PATH correto e reinicie o adb:
@@ -198,7 +207,7 @@ adb uninstall com.exemplo.simplesimon
 - Warnings do apksigner com Java (métodos restritos)
 São avisos de módulos nas versões recentes do Java; não impactam a assinatura.
 
-## 7) Validação
+## 8) Validação
 
 - Assinatura:
 ```bat
@@ -211,7 +220,7 @@ adb.exe install -r "C:\...\SimpleSimon-assinado.apk"
 adb.exe shell pm list packages | findstr simon
 ```
 
-## 8) Referências
+## 9) Referências
 
 https://developer.android.com/studio/publish/app-signing
 https://developer.android.com/studio/command-line/zipalign
